@@ -1,0 +1,14 @@
+albumentations==0.4.4
+efficientnet==1.0.0
+h5py==2.9.0
+imgaug==0.2.6
+Keras==2.2.4
+numpy==1.18.1
+opencv-python==4.2.0.32
+Pillow==7.0.0
+pydot==1.4.1
+scikit-image==0.16.2
+scipy==1.4.1
+segmentation-models==1.0.1
+tensorflow==2.1.0
+tqdm==4.51.0
