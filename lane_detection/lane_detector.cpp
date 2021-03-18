@@ -6,7 +6,7 @@
 #include <opencv2/core/utility.hpp>
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgproc.hpp"
-//#include "opencv2/cudaimgproc.hpp"
+#include "opencv2/cudaimgproc.hpp"
 
 // Used line merging method from https://stackoverflow.com/questions/30746327/get-a-single-line-representation-for-multiple-close-by-lines-clustered-together/30904076
 
@@ -270,7 +270,7 @@ std::vector<cv::Vec4i> LaneDetector::detectAndReduceLines(
     // }
 
     // std::cout << lines.size() <<std::endl;
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // partition via our partitioning function
     std::vector<int> labels;

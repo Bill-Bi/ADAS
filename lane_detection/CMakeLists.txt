@@ -4,8 +4,8 @@ project(lane_detector)
 find_package(CUDA REQUIRED)
 
 find_path(TENSORRT_INCLUDE_DIR NvInfer.h
-        HINTS  $ENV{TRT_RELEASE}
-        # HINTS ${TENSORRT_ROOT} ${CUDA_TOOLKIT_ROOT_DIR}
+        # HINTS  $ENV{TRT_RELEASE}
+        HINTS ${TENSORRT_ROOT} ${CUDA_TOOLKIT_ROOT_DIR}
         PATH_SUFFIXES include/)
 
        
@@ -13,13 +13,13 @@ find_path(TENSORRT_INCLUDE_DIR NvInfer.h
 message(STATUS "Found TensorRT headers at ${TENSORRT_INCLUDE_DIR}")
 
 find_library(TENSORRT_LIBRARY_INFER nvinfer
-        HINTS  $ENV{TRT_RELEASE}
-        # HINTS ${TENSORRT_ROOT} ${CUDA_TOOLKIT_ROOT_DIR}
+        # HINTS  $ENV{TRT_RELEASE}
+        HINTS ${TENSORRT_ROOT} ${CUDA_TOOLKIT_ROOT_DIR}
         PATH_SUFFIXES lib lib64 lib/x64)
         
 find_library(TENSORRT_LIBRARY_PARSER nvparsers
-        HINTS  $ENV{TRT_RELEASE}
-        # HINTS ${TENSORRT_ROOT} ${CUDA_TOOLKIT_ROOT_DIR}
+        # HINTS  $ENV{TRT_RELEASE}
+        HINTS ${TENSORRT_ROOT} ${CUDA_TOOLKIT_ROOT_DIR}
         PATH_SUFFIXES lib lib64 lib/x64)
         
 message(STATUS "Found TensorRT libs ${TENSORRT_LIBRARY_INFER}")
@@ -58,9 +58,9 @@ target_link_libraries(lane_detector
         ${TENSORRT_LIBRARY_PARSER}
         ${OpenCV_LIBS}
         ${CPP_FS_LIB}
-        # nvparsers
-        # nvonnxparser
-        # nvinfer_plugin
+        nvparsers
+        nvonnxparser
+        nvinfer_plugin
 )
 
 

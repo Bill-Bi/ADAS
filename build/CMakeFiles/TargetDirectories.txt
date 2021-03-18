@@ -1,9 +1,0 @@
-/home/billbi/Adas/build/CMakeFiles/rebuild_cache.dir
-/home/billbi/Adas/build/CMakeFiles/edit_cache.dir
-/home/billbi/Adas/build/CMakeFiles/ADAS.dir
-/home/billbi/Adas/build/lane_detection/CMakeFiles/rebuild_cache.dir
-/home/billbi/Adas/build/lane_detection/CMakeFiles/edit_cache.dir
-/home/billbi/Adas/build/lane_detection/CMakeFiles/test_lane_video_player.dir
-/home/billbi/Adas/build/lane_detection/CMakeFiles/test_lane_detector.dir
-/home/billbi/Adas/build/lane_detection/CMakeFiles/test_lane_identifier.dir
-/home/billbi/Adas/build/lane_detection/CMakeFiles/lane_detector.dir

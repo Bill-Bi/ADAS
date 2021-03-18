@@ -1,2 +1,0 @@
-/usr/bin/ar qc liblane_detector.a  CMakeFiles/lane_detector.dir/lane_detector.cpp.o CMakeFiles/lane_detector.dir/__/common/uff_models/common/getOptions.cpp.o CMakeFiles/lane_detector.dir/__/common/uff_models/common/logger.cpp.o CMakeFiles/lane_detector.dir/__/common/uff_models/common/sampleEngines.cpp.o CMakeFiles/lane_detector.dir/__/common/uff_models/common/sampleOptions.cpp.o CMakeFiles/lane_detector.dir/__/common/uff_models/common/uff_model.cpp.o CMakeFiles/lane_detector.dir/__/common/uff_models/unet/unet.cpp.o
-/usr/bin/ranlib liblane_detector.a

@@ -31,18 +31,24 @@ int main(int argc, char** argv) {
     std::string output_folder = "output_folder";
     std::string videoFilePath ="../lane_line.mp4";
     cv::namedWindow("CSI Camera", cv::WINDOW_AUTOSIZE);
-    double alpha = 0.8;
+    double alpha = 0.6;
     double beta = 1.0 - alpha;
     VideoCapture cap(videoFilePath);
     cv::Mat update_line_img;
+    int screen_height = 500;
+    int screen_width = 900;
     while(true){
         cap >> input_img;
         if (lane_detected){            
             cv::addWeighted(input_img, alpha, reduced_line_img, beta, 0.0, dst);
-            cv::imshow("CSI Camera",dst);
+            // cv::resize(dst,dst,cv::Size(screen_width, screen_height));
+            // cv::imshow("CSI Camera",dst);
         }else{
-            cv::imshow("CSI Camera",input_img);
+            dst = input_img;
+            // cv::imshow("CSI Camera",input_img);
         }
+        cv::resize(dst,dst,cv::Size(screen_width, screen_height));
+        cv::imshow("CSI Camera",dst);
         
         int keycode = cv::waitKey(30) & 0xff ; 
         if (keycode == 27) break ;
