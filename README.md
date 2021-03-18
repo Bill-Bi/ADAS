@@ -10,7 +10,7 @@ Advanced Driving Assistance System based on Jetson Nano embedded computer with t
 * CUDA 10.1
 * TensorRT 5
 
-## Setup for Linux - Ubuntu 20.04
+## Setup for Linux - Ubuntu 18.04/20.04
 
 ### Models and test data
 * Download models [here](https://drive.google.com/drive/u/0/folders/1STGPyK7os0lNbR1ZOlT-CD54BnEs1lSg) and put into the models folder
