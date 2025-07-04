@@ -1,12 +1,16 @@
 #include "utility.h"
 
-
 namespace ml_cam {
 
-// Define Microsoft functions and data types to use in other platform
+// ============================================================================
+// Cross-platform Environment Variable Functions
+// ============================================================================
+
+// Define Microsoft functions and data types for cross-platform compatibility
 #if !defined(_WIN32)
 typedef int errno_t;
 
+// Cross-platform implementation of _dupenv_s for non-Windows systems
 // https://docs.microsoft.com/en-us/cpp/c-runtime-library/reference/dupenv-s-wdupenv-s?view=vs-2017
 error_t _dupenv_s(char **pValue, size_t *len, const char *pPath) {
     char *value;
@@ -15,15 +19,15 @@ error_t _dupenv_s(char **pValue, size_t *len, const char *pPath) {
     if (value != NULL) {
         *len = strlen(value);
 
-        char *buf = (char *)malloc((*len + 1) * sizeof(char));
+        char *buffer = (char *)malloc((*len + 1) * sizeof(char));
         // Check memory allocation
-        if (buf == NULL) {  // Not enough memory
+        if (buffer == NULL) {  // Not enough memory
             return ENOMEM;
         }
 
-        strncpy(buf, value, *len);
-        buf[*len] = '\0';
-        *pValue = buf;
+        strncpy(buffer, value, *len);
+        buffer[*len] = '\0';
+        *pValue = buffer;
     } else {
         return EINVAL;
     }
@@ -32,21 +36,31 @@ error_t _dupenv_s(char **pValue, size_t *len, const char *pPath) {
 }
 #endif  // _WIN32
 
-void setLabel(cv::Mat &im, const std::string label, const cv::Point &origin) {
-    int fontface = cv::FONT_HERSHEY_SIMPLEX;
+// ============================================================================
+// Image Processing Functions
+// ============================================================================
+
+// Draw text label on image with green background rectangle
+void setLabel(cv::Mat &image, const std::string label, const cv::Point &origin) {
+    int font_face = cv::FONT_HERSHEY_SIMPLEX;
     double scale = 0.5;
     int thickness = 1;
     int baseline = 0;
 
-    cv::Size text =
-        cv::getTextSize(label, fontface, scale, thickness, &baseline);
-    cv::rectangle(im, origin + cv::Point(0, baseline),
-                  origin + cv::Point(text.width, -text.height),
+    cv::Size text_size =
+        cv::getTextSize(label, font_face, scale, thickness, &baseline);
+    cv::rectangle(image, origin + cv::Point(0, baseline),
+                  origin + cv::Point(text_size.width, -text_size.height),
                   cv::Scalar(0, 255, 0), cv::FILLED);
-    cv::putText(im, label, origin, fontface, scale, cv::Scalar(0, 0, 0),
+    cv::putText(image, label, origin, font_face, scale, cv::Scalar(0, 0, 0),
                 thickness, 8);
 }
 
+// ============================================================================
+// System Path Functions
+// ============================================================================
+
+// Get user's home directory path across different platforms
 std::string getHomePath() {
     char *pValue;
     char *pValue2;
@@ -55,23 +69,23 @@ std::string getHomePath() {
     errno_t err2;
 
     if (!err && pValue != NULL) {
-        std::string pValueStdStr = pValue;
+        std::string home_path = pValue;
         free(pValue);
-        return pValueStdStr;
+        return home_path;
     } else {
         err = _dupenv_s(&pValue, &len, "USERPROFILE");
 
         if (!err && pValue != NULL) {
-            std::string pValueStdStr = pValue;
+            std::string user_profile = pValue;
             free(pValue);
-            return pValueStdStr;
+            return user_profile;
         } else {
             err = _dupenv_s(&pValue, &len, "HOMEDRIVE");
             err2 = _dupenv_s(&pValue2, &len, "HOMEPATH");
 
             if (!err && !err2 && pValue != NULL && pValue2 != NULL) {
-                std::string pValueStdStr = std::string(pValue) + pValue2;
-                return pValueStdStr;
+                std::string home_path = std::string(pValue) + pValue2;
+                return home_path;
             }
 
             free(pValue);
@@ -82,39 +96,43 @@ std::string getHomePath() {
     return "";
 }
 
+// ============================================================================
+// OpenCV-Qt Conversion Functions
+// ============================================================================
+
+// Convert OpenCV Mat to Qt QImage
 QImage Mat2QImage(cv::Mat const &src) {
-    cv::Mat temp;  // make the same cv::Mat
-    cvtColor(src, temp,
-             cv::COLOR_BGR2RGB);  // cvtColor Makes a copy, that what i need
+    cv::Mat temp;  // Create temporary Mat for color conversion
+    cvtColor(src, temp, cv::COLOR_BGR2RGB);  // Convert BGR to RGB
     QImage dest((const uchar *)temp.data, static_cast<int>(temp.cols),
                 static_cast<int>(temp.rows), static_cast<int>(temp.step),
                 QImage::Format_RGB888);
-    dest.bits();  // enforce deep copy, see documentation
-    // of QImage::QImage ( const uchar * data, int width, int height, Format
-    // format )
+    dest.bits();  // Enforce deep copy for proper memory management
     return dest;
 }
 
+// Convert Qt QImage to OpenCV Mat
 cv::Mat QImage2Mat(QImage const &src) {
-    cv::Mat tmp(src.height(), src.width(), CV_8UC3, (uchar *)src.bits(),
+    cv::Mat temp(src.height(), src.width(), CV_8UC3, (uchar *)src.bits(),
                 src.bytesPerLine());
-    cv::Mat
-        result;  // deep copy just in case (my lack of knowledge with open cv)
-    cvtColor(tmp, result, cv::COLOR_BGR2RGB);
+    cv::Mat result;  // Deep copy for proper memory management
+    cvtColor(temp, result, cv::COLOR_BGR2RGB);
     return result;
 }
 
+// ============================================================================
+// Image Overlay Functions
+// ============================================================================
 
-void placeOverlay(cv::Mat &image, const cv::Mat &overlay,
-    int x, int y) {
-
+// Overlay one image onto another at specified position
+void placeOverlay(cv::Mat &image, const cv::Mat &overlay, int x, int y) {
+    // Validate overlay dimensions fit within target image
     assert(x + overlay.cols < image.cols);
     assert(y + overlay.rows < image.rows);
 
-    cv::Mat dest_roi;
-    dest_roi = image(cv::Rect(x, y, overlay.cols, overlay.rows));
-    overlay.copyTo(dest_roi);
-
+    cv::Mat destination_roi;
+    destination_roi = image(cv::Rect(x, y, overlay.cols, overlay.rows));
+    overlay.copyTo(destination_roi);
 }
 
 }  // namespace ml_cam
