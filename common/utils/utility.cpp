@@ -85,7 +85,7 @@ std::string getHomePath() {
 QImage Mat2QImage(cv::Mat const &src) {
     cv::Mat temp;  // make the same cv::Mat
     cvtColor(src, temp,
-             cv::COLOR_BGR2RGB);  // cvtColor Makes a copt, that what i need
+             cv::COLOR_BGR2RGB);  // cvtColor Makes a copy, that what i need
     QImage dest((const uchar *)temp.data, static_cast<int>(temp.cols),
                 static_cast<int>(temp.rows), static_cast<int>(temp.step),
                 QImage::Format_RGB888);
@@ -105,7 +105,7 @@ cv::Mat QImage2Mat(QImage const &src) {
 }
 
 
-void place_overlay(cv::Mat &image, const cv::Mat &overlay,
+void placeOverlay(cv::Mat &image, const cv::Mat &overlay,
     int x, int y) {
 
     assert(x + overlay.cols < image.cols);

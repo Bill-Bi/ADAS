@@ -42,7 +42,7 @@ cv::Mat LaneDetector::getLaneMask(const cv::Mat& input_img) {
 }
 
 // Lane detect function
-// For debug purpose
+// For debugging purposes
 std::vector<LaneLine> LaneDetector::detectLaneLines(
     const cv::Mat& input_img, cv::Mat& line_mask, cv::Mat& detected_lines_img,
     cv::Mat& reduced_lines_img, bool &lane_departure) {

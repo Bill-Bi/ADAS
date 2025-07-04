@@ -11,7 +11,7 @@ int main(int argc, char** argv) {
 
     std::string input_folder = "../input_folder";
     std::string output_folder = "output_folder";
-    std::string videoFilePath ="../lane_line.mp4";
+    std::string video_file_path ="../lane_line.mp4";
     fs::create_directory(output_folder);
 
     cout << "Input folder: " << input_folder << endl;
@@ -27,7 +27,7 @@ int main(int argc, char** argv) {
     size_t n_images = 0;
     double alpha = 0.5;
     double beta = 1.0 - alpha;
-    VideoCapture cap(videoFilePath);
+    VideoCapture cap(video_file_path);
 
     cv::namedWindow("CSI Camera", cv::WINDOW_AUTOSIZE);
 

@@ -1,3 +1,4 @@
+// Cross-platform filesystem include
 #ifndef __GNUC__
     #include <filesystem>
     namespace fs = std::filesystem;

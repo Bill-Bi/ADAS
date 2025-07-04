@@ -9,8 +9,8 @@ Timer::time_point_t Timer::getCurrentTime() {
     return std::chrono::system_clock::now();
 }
 
-// Calculate the duration between 2 time point
-// return value as time_duration_t (miliseconds)
+// Calculate the duration between 2 time points
+// return value as time_duration_t (milliseconds)
 Timer::time_duration_t Timer::calcDiff(time_point_t begin, time_point_t end) {
     return std::chrono::duration_cast<std::chrono::milliseconds>(end - begin).count();
 }

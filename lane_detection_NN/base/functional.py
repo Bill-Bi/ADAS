@@ -3,7 +3,7 @@ SMOOTH = 1e-5
 
 
 # ----------------------------------------------------------------
-#   Helpers
+#   Helper Functions
 # ----------------------------------------------------------------
 
 def _gather_channels(x, indexes):
@@ -42,7 +42,7 @@ def round_if_needed(x, threshold):
         x = tf.keras.backend.cast(x, tf.keras.backend.floatx())
     return x
 
-def oposite_round_if_needed(x, threshold):
+def opposite_round_if_needed(x, threshold):
     if threshold is not None:
         x = tf.keras.backend.less_equal(x, threshold)
         x = tf.keras.backend.cast(x, tf.keras.backend.floatx())

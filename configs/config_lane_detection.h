@@ -1,6 +1,7 @@
 #if !defined(CONFIG_LANE_DETECTION_H)
 #define CONFIG_LANE_DETECTION_H
 
+// Lane detection configuration parameters
 #define LANE_DETECTION_BATCH_SIZE 1
 #define LANE_DETECTION_N_CLASSES 1
 #define LANE_DETECTION_FORCE_REBUILD_ENGINE false
