@@ -71,7 +71,7 @@ class DiceLoss(Loss):
         smooth: Value to avoid division by zero.
 
     Returns:
-        A callable ``dice_loss`` instance. Can be used in ``model.compile(...)`` function`
+        A callable ``dice_loss`` instance. Can be used in ``model.compile(...)`` function
         or combined with other losses.
 
     Example:

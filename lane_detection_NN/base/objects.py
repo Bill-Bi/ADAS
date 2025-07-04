@@ -106,11 +106,11 @@ class MultipliedLoss(Loss):
 
 class SumOfLosses(Loss):
 
-    def __init__(self, l1, l2):
-        name = '{}_plus_{}'.format(l1.__name__, l2.__name__)
+    def __init__(self, loss1, loss2):
+        name = '{}_plus_{}'.format(loss1.__name__, loss2.__name__)
         super().__init__(name=name)
-        self.l1 = l1
-        self.l2 = l2
+        self.loss1 = loss1
+        self.loss2 = loss2
 
     def __call__(self, gt, pr):
-        return self.l1(gt, pr) + self.l2(gt, pr)
+        return self.loss1(gt, pr) + self.loss2(gt, pr)

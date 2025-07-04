@@ -1,6 +1,6 @@
 import losses
 
-description = "Training with Bill's config"
+description = "Training with Bill's configuration"
 
 model_type = "UNET"
 

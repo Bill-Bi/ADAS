@@ -37,10 +37,10 @@ for img_path in img_paths:
     img = cv2.resize(img, (cfg.image_size, cfg.image_size), interpolation=cv2.INTER_NEAREST)
 
     net_input = np.expand_dims(img, axis=0)
-    pr_mask = model.predict(net_input)[0]
-    pr_mask *= 255
-    pr_mask = pr_mask.astype(np.uint8)
-    pr_mask = cv2.cvtColor(pr_mask, cv2.COLOR_GRAY2BGR)
+    predicted_mask = model.predict(net_input)[0]
+    predicted_mask *= 255
+    predicted_mask = predicted_mask.astype(np.uint8)
+    predicted_mask = cv2.cvtColor(predicted_mask, cv2.COLOR_GRAY2BGR)
 
-    result = np.concatenate((img, pr_mask), axis=1)
+    result = np.concatenate((img, predicted_mask), axis=1)
     cv2.imwrite(output_path, result)

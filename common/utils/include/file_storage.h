@@ -20,7 +20,7 @@ class FileStorage {
     fs::path PHOTO_FOLDER;
     fs::path VIDEO_FOLDER;
 
-    fs::path last_saved_item;
+    fs::path last_saved_file;
 
    public:
     FileStorage();

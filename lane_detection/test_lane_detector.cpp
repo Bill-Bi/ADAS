@@ -51,7 +51,7 @@ int main(int argc, char** argv) {
             cv::imwrite(output_img_path, output_img);
         }
     }
-    cout << "Avg. time: " << total_time / n_images << " ms" << endl;
+    cout << "Average time: " << total_time / n_images << " ms" << endl;
 
     return 0;
 }

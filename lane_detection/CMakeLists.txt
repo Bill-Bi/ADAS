@@ -42,10 +42,10 @@ include_directories(${CUDA_INCLUDE_DIRS}
                     ../configs
                     )
 
-file(GLOB UFF_MODEL_CPP ../common/uff_models/common/*.cpp)
+file(GLOB UFF_MODEL_SOURCES ../common/uff_models/common/*.cpp)
 file(GLOB UNET_CPP ../common/uff_models/unet/*.cpp)
 
-cuda_add_library(lane_detector lane_detector.cpp ${UFF_MODEL_CPP} ${UNET_CPP})
+cuda_add_library(lane_detector lane_detector.cpp ${UFF_MODEL_SOURCES} ${UNET_CPP})
 
 # Use C++ 17
 target_compile_features(lane_detector PRIVATE cxx_std_17)

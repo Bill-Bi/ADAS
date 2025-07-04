@@ -14,13 +14,13 @@ static cv::Mat detected_line_img;
 static cv::Mat reduced_line_img;
 static cv::Mat dst;
 static bool lane_departure;
-static bool lane_detected = false;
+static bool lane_found = false;
 
 void laneDetectionThread(){
     LaneDetector lane_detector;
     while(true) {
         std::vector<LaneLine> detected_lines = lane_detector.detectLaneLines(input_img, lane_line_mask, detected_line_img, reduced_line_img, lane_departure);
-        lane_detected = true;
+        lane_found = true;
     }
 }
 
@@ -39,7 +39,7 @@ int main(int argc, char** argv) {
     int screen_width = 900;
     while(true){
         cap >> input_img;
-        if (lane_detected){            
+        if (lane_found){            
             cv::addWeighted(input_img, alpha, reduced_line_img, beta, 0.0, dst);
             // cv::resize(dst,dst,cv::Size(screen_width, screen_height));
             // cv::imshow("CSI Camera",dst);

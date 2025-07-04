@@ -3,6 +3,7 @@
 
 #include <string>
 
+// Camera structure for V4L device
 struct Camera { 
    int v4l_id;
    std::string identifier;

@@ -18,8 +18,8 @@ class Timer {
     
     static time_point_t getCurrentTime();
 
-    // Calculate the duration between 2 time point
-    // return value as time_duration_t (miliseconds)
+    // Calculate the duration between 2 time points
+    // return value as time_duration_t (milliseconds)
     static time_duration_t calcDiff(time_point_t begin, time_point_t end);
 
     // Get time passed (duration from a time point in the past to current time)

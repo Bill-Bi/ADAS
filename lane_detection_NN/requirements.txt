@@ -1,3 +1,4 @@
+# Required packages for lane detection neural network
 albumentations==0.4.4
 efficientnet==1.0.0
 h5py==2.9.0

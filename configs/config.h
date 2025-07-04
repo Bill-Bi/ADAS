@@ -10,7 +10,7 @@
 
 #define SMARTCAM_DEBUG
 
-// Show lane debug images
+// Display lane debug images
 // #define DEBUG_LANE_DETECTOR_SHOW_LINES
 // #define DEBUG_LANE_DETECTOR_SHOW_LINE_MASK
 // #define DEBUG_SHOW_FPS
