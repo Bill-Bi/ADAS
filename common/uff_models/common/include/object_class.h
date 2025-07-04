@@ -3,6 +3,7 @@
 
 #include <string>
 
+// Object classification structure
 struct ObjectClass {
     int id;
     std::string name;

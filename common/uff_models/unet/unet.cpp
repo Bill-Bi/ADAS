@@ -30,7 +30,7 @@ bool Unet::processInput(const samplesCommon::BufferManager& buffers,
     cv::Mat resized_img;
     cv::resize(img, resized_img, cv::Size(inputW, inputH));
 
-    // put data into buffer
+    // put data in buffer
     float* hostDataBuffer =
         static_cast<float*>(buffers.getHostBuffer(mParams.inputTensorNames[0]));
 

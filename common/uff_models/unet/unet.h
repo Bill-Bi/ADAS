@@ -33,7 +33,7 @@ struct Unet : UffModel {
 
    private:
 
-    // Put input to buffer
+    // Put input into buffer
     bool processInput(const samplesCommon::BufferManager& buffers,
                       const cv::Mat& input_img);
 

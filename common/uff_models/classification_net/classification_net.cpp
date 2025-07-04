@@ -27,7 +27,7 @@ bool ClassificationNet::processInput(const samplesCommon::BufferManager& buffers
     const int inputW = mParams.inputW;
     const int batchSize = imgs.size();
 
-    // put data into buffer
+    // put data in buffer
     float* hostDataBuffer =
         static_cast<float*>(buffers.getHostBuffer(mParams.inputTensorNames[0]));
 

@@ -5,6 +5,7 @@
 #include <atomic>
 #include "utils.h"
 
+// Bird's eye view transformation model
 class BirdViewModel {
 
     int birdview_img_width = 1000;

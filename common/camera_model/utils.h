@@ -3,6 +3,7 @@
 
 #include <opencv2/opencv.hpp>
 
+// Four corner points structure for perspective transformation
 class FourPoints {
    public:
     cv::Point2f tl;

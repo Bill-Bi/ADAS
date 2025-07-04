@@ -33,7 +33,7 @@ struct ClassificationNet : UffModel {
     std::string getClassName(int class_id);
 
    private:
-    // Put input to buffer
+    // Put input into buffer
     bool processInput(const samplesCommon::BufferManager& buffers, 
                         const std::vector<cv::Mat> &imgs);
 

@@ -34,6 +34,7 @@
 #include "birdview_model.h"
 #include "utils.h"
 
+// Camera model class for handling camera calibration and transformation
 class CameraModel : public QObject {
     Q_OBJECT
     std::shared_ptr<CarStatus> car_status;

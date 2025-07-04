@@ -2,6 +2,7 @@
 // Created by cao on 19-11-7.
 //
 
+// Python API for ONNX model inference
 #include "ctdetNet.h"
 #include "python_api.h"
 

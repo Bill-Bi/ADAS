@@ -47,6 +47,7 @@
  * Users Notice.
  */
 
+// Logger implementation for TensorRT
 #include "logger.h"
 #include "logging.h"
 
