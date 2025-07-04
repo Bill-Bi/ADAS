@@ -1,0 +1,37 @@
+{
+  "lane_detection": {
+    "model_path": "lane_segmentation_384x384.uff",
+    "engine_path": "lane_segmentation_384x384.engine",
+    "input_width": 384,
+    "input_height": 384,
+    "batch_size": 1,
+    "precision": "FP16",
+    "input_node": "data",
+    "output_node": "sigmoid/Sigmoid"
+  },
+  "traffic_sign_recognition": {
+    "model_path": "traffic_sign_classifier.onnx",
+    "engine_path": "traffic_sign_classifier.engine",
+    "input_width": 224,
+    "input_height": 224,
+    "batch_size": 1,
+    "precision": "FP16",
+    "num_classes": 43
+  },
+  "object_detection": {
+    "vehicle_model": "vehicle_detector.uff",
+    "pedestrian_model": "pedestrian_detector.uff",
+    "input_width": 416,
+    "input_height": 416,
+    "batch_size": 1,
+    "precision": "FP16",
+    "confidence_threshold": 0.5,
+    "nms_threshold": 0.4
+  },
+  "model_optimization": {
+    "use_tensorrt": true,
+    "use_fp16": true,
+    "max_workspace_size": 268435456,
+    "force_rebuild_engine": false
+  }
+} 

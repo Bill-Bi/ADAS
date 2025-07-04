@@ -1,0 +1,47 @@
+# Test Configuration for ADAS Input Folder
+# This file contains settings for testing the Advanced Driver Assistance System
+
+[TEST_SETTINGS]
+# Test mode configuration
+test_mode = lane_detection
+output_folder = ../output_folder
+save_results = true
+display_results = false
+
+[IMAGE_PROCESSING]
+# Image processing parameters
+resize_width = 1920
+resize_height = 1080
+normalize = true
+preprocessing = true
+
+[LANE_DETECTION]
+# Lane detection test parameters
+confidence_threshold = 0.5
+min_line_length = 50
+max_line_gap = 10
+angle_threshold = 20
+
+[TRAFFIC_SIGN_RECOGNITION]
+# Traffic sign recognition parameters
+min_confidence = 0.7
+nms_threshold = 0.4
+detection_classes = 43
+
+[OBJECT_DETECTION]
+# Object detection parameters
+vehicle_confidence = 0.6
+pedestrian_confidence = 0.5
+detection_distance = 100
+
+[PERFORMANCE]
+# Performance monitoring
+fps_target = 30
+max_processing_time = 100
+enable_profiling = true
+
+[OUTPUT]
+# Output configuration
+save_annotated_images = true
+save_detection_logs = true
+output_format = jpg 
